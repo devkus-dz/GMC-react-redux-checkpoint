@@ -2,6 +2,12 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { setTaskToEdit, toggleCompleted, deleteTask } from "../store/taskSlice";
 
+/**
+ * Task component 
+ * 
+ * @param {object} props - the component props
+ * @returns {JSX.Element} A JSX element representing the Task data and actions
+ */
 export default function Task({id ,name, description, priority, completed}){
   
   const dispatch = useDispatch();

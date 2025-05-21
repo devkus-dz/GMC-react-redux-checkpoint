@@ -9,19 +9,17 @@ import Task from './Task';
  * @returns {JSX.Element} Rendered list of tasks.
  */
 export default function TaskList() {
+  // getting data and filter from the store
   const tasks = useSelector((state) => state.tasks.tasks);
   const filters = useSelector((state) => state.tasks.filters);
 
+  // applying filters 
   const filteredTasks = tasks.filter(task => {
     const matchesName = task.name
       .toLowerCase()
       .includes(filters.nameFilter.toLowerCase());
-    const matchesPriority =
-      !filters.priorityFilter || task.priority === filters.priorityFilter;
-    const matchesCompleted =
-      filters.completedFilter === ''
-        ? true
-        : task.completed.toString() === filters.completedFilter.toString();
+    const matchesPriority = !filters.priorityFilter || task.priority === filters.priorityFilter;
+    const matchesCompleted = filters.completedFilter === ''? true : task.completed.toString() === filters.completedFilter.toString();
 
     return matchesName && matchesPriority && matchesCompleted;
   });

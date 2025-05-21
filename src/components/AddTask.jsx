@@ -3,10 +3,19 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask, editTask, clearTaskToEdit } from "../store/taskSlice";
 
-export default function AddTask(props){
+/**
+ * TaskForm component for creating or editing a task.
+ *
+ * This form is conditionally rendered only when `open` is `true`.
+ * It handles form state, validation, and submission, and supports edit mode via `taskEdit`.
+ *
+ * @component
+ * @returns {JSX.Element|null} Task form JSX when open, otherwise null.
+ */
+export default function AddTask(){
     
     const dispatch = useDispatch();
-    const taskEdit = useSelector((state) => state.tasks.taskEdit); // getting data to edit to fill the form 
+    const taskEdit = useSelector((state) => state.tasks.taskEdit); // getting data to fill the form 
 
     // Local state for the form fields
     const [formData, setFormData] = useState({
@@ -35,7 +44,7 @@ export default function AddTask(props){
         }));
     };
 
-    // Step 3: Handle form submit
+    // Handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
 

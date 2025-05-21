@@ -16,17 +16,16 @@ export default function Filter() {
   const filters = useSelector((state) => state.tasks.filters);
   const dispatch = useDispatch();
   
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     dispatch(setFilter({ name, value }));
   };
-
+  // open | close the AddTask Component
   const handleForm = () => {
     dispatch(formOpen());
     dispatch(clearTaskToEdit());
   };
-
+  // reset all filters 
   const handleReset = () => {
     dispatch(resetFilters());
   };
